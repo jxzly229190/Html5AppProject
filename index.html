@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="css/mui.min.css">
 		<script src="js/mui.min.js"></script>
 		<script src="js/update.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 
 	<body>
@@ -56,8 +57,6 @@
 							aniShow:'none'
 						}
 					});
-					
-					
 				},200);
 			});
 			
@@ -137,15 +136,7 @@
 			//处理右上角关于图标的点击事件；
 			var subWebview = null,template = null;
 			document.getElementById('info').addEventListener('tap', function() {
-				if (subWebview == null) {
-					//获取共用父窗体					
-					template = plus.webview.getWebviewById("default-main");
-					subWebview = template.children()[0];
-				}
-				subWebview.loadURL('plus/info.html');
-				//修改共用父模板的标题
-				mui.fire(template,'updateHeader',{title:'关于',showMenu:false});
-				template.show('slide-in-right', 150);
+				myAction.openPage('plus/info.html',"关于");
 			});
 			
 			//首页返回键处理
